@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor App Concept Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .donut-chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 400px;
+        }
+        .flow-arrow {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #64B5F6;
+        }
+        .flow-card {
+            background-color: white;
+            border: 1px solid #BBDEFB;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        .arch-card {
+            background-color: white;
+            border: 2px solid #1976D2;
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            text-align: center;
+            font-weight: 600;
+            color: #0D47A1;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-darkest': '#0D47A1',
+                        'brand-dark': '#1976D2',
+                        'brand-primary': '#2196F3',
+                        'brand-light': '#64B5F6',
+                        'brand-lightest': '#BBDEFB',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-slate-800">
+
+    <main>
+        <!-- Chosen Color Palette: Brilliant Blues -->
+        <header class="bg-brand-darkest text-white p-8 md:p-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Vendor App</h1>
+            <h2 class="text-2xl md:text-3xl font-light text-brand-lightest">Concept Note & System Outlay</h2>
+            <p class="max-w-3xl mx-auto mt-6 text-base md:text-lg text-brand-lightest">
+                This infographic details the development of a Vendor Application integrated with the ERP to streamline purchase orders, invoicing, and payment tracking. The core objective is to enhance accuracy, transparency, and real-time updates for all stakeholders.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-10">
+                <div class="bg-brand-dark p-6 rounded-lg shadow-xl">
+                    <span class="text-5xl">🎯</span>
+                    <h3 class="text-2xl font-bold mt-2">Accuracy</h3>
+                    <p class="mt-2 text-brand-lightest">Reduce manual entry errors via direct system integration.</p>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-lg shadow-xl">
+                    <span class="text-5xl">🔍</span>
+                    <h3 class="text-2xl font-bold mt-2">Transparency</h3>
+                    <p class="mt-2 text-brand-lightest">Provide a single source of truth for all vendor activities.</p>
+                </div>
+                <div class="bg-brand-dark p-6 rounded-lg shadow-xl">
+                    <span class="text-5xl">⏱️</span>
+                    <h3 class="text-2xl font-bold mt-2">Real-Time Updates</h3>
+                    <p class="mt-2 text-brand-lightest">Notify vendors instantly on POs and payment status.</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-12 md:py-16 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-brand-darkest mb-4">High-Level System Architecture</h2>
+                <p class="text-lg text-center text-slate-600 max-w-3xl mx-auto mb-12">
+                    The system is built on five core components that communicate to ensure a seamless flow of data from internal creation to external vendor interaction.
+                </p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2 flex-wrap">
+                    <div class="arch-card">ERP System</div>
+                    <span class="text-3xl font-bold text-brand-light rotate-90 md:rotate-0">↔️</span>
+                    <div class="arch-card">API Gateway</div>
+                    <span class="text-3xl font-bold text-brand-light rotate-90 md:rotate-0">↔️</span>
+                    <div class="arch-card">Vendor App (Web + Mobile)</div>
+                </div>
+                <div class="flex flex-col md:flex-row items-stretch justify-center gap-8 mt-8">
+                    <div class="arch-card bg-brand-lightest border-brand-light text-brand-dark">
+                        <span class="text-2xl">📦</span><br>Centralized Document Storage
+                    </div>
+                    <div class="arch-card bg-brand-lightest border-brand-light text-brand-dark">
+                        <span class="text-2xl">🔔</span><br>Notification Engine
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-12 md:py-16 bg-brand-lightest">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-brand-darkest mb-4">Core Workflow: Purchase Order (PO/JO)</h2>
+                <p class="text-lg text-center text-slate-600 max-w-3xl mx-auto mb-12">
+                    The initial order process is a clear, four-step flow that begins in the ERP and moves directly to the vendor's device, ensuring immediate confirmation and tracking.
+                </p>
+                <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 md:gap-0">
+                    <div class="flow-card z-10">
+                        <div class="text-4xl font-bold text-brand-primary mb-2">1</div>
+                        <h3 class="text-xl font-bold text-brand-darkest mb-2">PO/JO Creation</h3>
+                        <p class="text-sm text-slate-600">Purchase/Operations team creates the order in the <span class="font-bold">ERP</span> after an item-wise budget check.</p>
+                    </div>
+                    <div class="flex items-center justify-center -my-4 md:my-0 md:-mx-3 z-0">
+                        <span class="flow-arrow rotate-90 md:rotate-0">→</span>
+                    </div>
+                    <div class="flow-card z-10">
+                        <div class="text-4xl font-bold text-brand-primary mb-2">2</div>
+                        <h3 class="text-xl font-bold text-brand-darkest mb-2">Notification</h3>
+                        <p class="text-sm text-slate-600">Vendor instantly receives a push notification and PDF copy of the PO via the <span class="font-bold">App</span>.</p>
+                    </div>
+                    <div class="flex items-center justify-center -my-4 md:my-0 md:-mx-3 z-0">
+                        <span class="flow-arrow rotate-90 md:rotate-0">→</span>
+                    </div>
+                    <div class="flow-card z-10">
+                        <div class="text-4xl font-bold text-brand-primary mb-2">3</div>
+                        <h3 class="text-xl font-bold text-brand-darkest mb-2">Confirmation</h3>
+                        <p class="text-sm text-slate-600">Vendor reviews and formally accepts the PO to begin fulfillment directly within the <span class="font-bold">App</span>.</p>
+                    </div>
+                     <div class="flex items-center justify-center -my-4 md:my-0 md:-mx-3 z-0">
+                        <span class="flow-arrow rotate-90 md:rotate-0">→</span>
+                    </div>
+                    <div class="flow-card z-10">
+                        <div class="text-4xl font-bold text-brand-primary mb-2">4</div>
+                        <h3 class="text-xl font-bold text-brand-darkest mb-2">Tracking</h3>
+                        <p class="text-sm text-slate-600">Both parties use the <span class="font-bold">App</span> to track delivery dates or estimated job completion times.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 md:py-16 bg-white">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-brand-darkest mb-4">Key Modules & Compliance</h2>
+                <p class="text-lg text-center text-slate-600 max-w-3xl mx-auto mb-12">
+                    The application is organized into distinct modules for vendors and is built upon a foundation of key compliance checks.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand-dark mb-6">Vendor-Facing Modules</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl text-brand-primary">👤</span>
+                                <div>
+                                    <h4 class="font-bold text-lg">Vendor Profile</h4>
+                                    <p class="text-slate-600">Manage contact, bank, and compliance details (PAN, GST, MSME).</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl text-brand-primary">🚚</span>
+                                <div>
+                                    <h4 class="font-bold text-lg">Delivery & Completion</h4>
+                                    <p class="text-slate-600">Update material delivery or work completion with photo/document uploads.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl text-brand-primary">🧾</span>
+                                <div>
+                                    <h4 class="font-bold text-lg">Invoice Submission</h4>
+                                    <p class="text-slate-600">Upload tax invoices and link them directly to the corresponding PO.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <span class="text-3xl text-brand-primary">💳</span>
+                                <div>
+                                    <h4 class="font-bold text-lg">Payment Tracking</h4>
+                                    <p class="text-slate-600">View the complete lifecycle of an invoice from submission to payment.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-brand-dark mb-6 text-center">Compliance Pillars</h3>
+                        <p class="text-center text-slate-600 mb-4">
+                            The system integrates four key pillars of compliance, ensuring all vendor interactions and payments are automatically validated.
+                        </p>
+                        <div class="donut-chart-container">
+                            <canvas id="complianceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="text-center p-8 bg-brand-darkest text-brand-lightest">
+            <p>Vendor App Concept Infographic</p>
+        </footer>
+    </main>
+    <!-- Visualization Choices:
+        - Objective: Single Big Numbers (HTML/Tailwind)
+        - Architecture: Process Flow (HTML/Tailwind Cards)
+        - Core Workflow: Sequential Flow Chart (HTML/Tailwind Cards)
+        - Compliance: Composition Breakdown (Chart.js Doughnut Chart)
+        - Implementation Plan: REMOVED as requested.
+        - NO SVG and NO MERMAID JS were used.
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+            
+            const complianceCtx = document.getElementById('complianceChart');
+            if (complianceCtx) {
+                new Chart(complianceCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            ['TDS Auto-Calculation', 'based on PAN, type of vendor, nature of service'],
+                            ['MSME Compliance', 'dashboard (mandatory timelines)'],
+                            ['GST Compliance:', 'Vendor classification, GST mismatch detection'],
+                            'PAN/Aadhaar Validation'
+                        ],
+                        datasets: [{
+                            label: 'Compliance Pillars',
+                            data: [1, 1, 1, 1],
+                            backgroundColor: [
+                                '#0D47A1',
+                                '#1976D2',
+                                '#2196F3',
+                                '#64B5F6'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 20,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
